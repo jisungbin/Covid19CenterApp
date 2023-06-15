@@ -5,7 +5,7 @@
  * Please see full license: https://github.com/jisungbin/Covid19CenterApp/blob/main/LICENSE
  */
 
-package io.github.jisungbin.covid19center
+package io.github.jisungbin.covid19center.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
