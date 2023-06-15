@@ -69,17 +69,24 @@ android {
   }
 }
 
+repositories {
+  // needed for naver-map
+  maven("https://naver.jfrog.io/artifactory/maven/")
+}
+
 dependencies {
   kapt(libs.android.hilt.compile)
   implementations(
     libs.android.leakcanary,
     libs.android.hilt.runtime,
+    libs.androidx.appcompat, // needed for naver-map
     libs.androidx.annotation,
     libs.androidx.datastore,
     libs.kotlinx.coroutines,
     libs.kotlinx.collections.immutable,
     libs.compose.uiutil,
     libs.compose.activity,
+    libs.compose.map.naver,
     libs.bundles.compose,
     libs.bundles.jackson,
     libs.bundles.ktor.client,

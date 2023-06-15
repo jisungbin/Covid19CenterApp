@@ -25,6 +25,14 @@
       </intent-filter>
     </activity>
 
+    <activity
+      android:name=".activity.MapActivity"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+    <meta-data
+      android:name="com.naver.maps.map.CLIENT_ID"
+      android:value="2w8az5mbvn" />
+
   </application>
 
 </manifest>
