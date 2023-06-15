@@ -11,8 +11,10 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("android") version libs.versions.kotlin.core
-  id("com.android.application") version libs.versions.gradle.android
+  alias(libs.plugins.kotlin.kapt)
+  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.android.hilt)
   alias(libs.plugins.kotlin.detekt)
   alias(libs.plugins.kotlin.ktlint)
   alias(libs.plugins.gradle.dependency.handler.extensions)
@@ -31,6 +33,7 @@ android {
 
   buildFeatures {
     compose = true
+    buildConfig = true
   }
 
   composeOptions {
@@ -64,6 +67,28 @@ android {
   kotlin {
     jvmToolchain(17)
   }
+}
+
+dependencies {
+  kapt(libs.android.hilt.compile)
+  implementations(
+    libs.android.leakcanary,
+    libs.android.hilt.runtime,
+    libs.androidx.annotation,
+    libs.androidx.datastore,
+    libs.kotlinx.coroutines,
+    libs.compose.uiutil,
+    libs.compose.activity,
+    libs.bundles.compose,
+    libs.bundles.jackson,
+    libs.bundles.ktor.client,
+  )
+  testImplementations(
+    libs.test.ktor.client.mock,
+    libs.test.kotlinx.coroutines,
+    libs.bundles.kotest,
+  )
+  detektPlugins(libs.detekt.plugin.formatting)
 }
 
 detekt {
@@ -114,13 +139,4 @@ tasks.withType<KotlinCompile> {
       "plugin:androidx.compose.compiler.plugins.kotlin:liveLiteralsEnabled=false",
     )
   }
-}
-
-dependencies {
-  implementations(
-    libs.compose.uiutil,
-    libs.compose.activity,
-    libs.bundles.compose,
-  )
-  detektPlugins(libs.detekt.plugin.formatting)
 }
