@@ -8,10 +8,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools">
 
-  <application tools:ignore="MissingApplicationIcon">
+  <uses-permission android:name="android.permission.INTERNET" />
+
+  <application
+    android:name=".App"
+    tools:ignore="MissingApplicationIcon">
 
     <activity
-      android:name=".PrefetchActivity"
+      android:name=".activity.PrefetchActivity"
       android:exported="true"
       android:theme="@android:style/Theme.Material.NoActionBar">
 
