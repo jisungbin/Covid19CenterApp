@@ -76,8 +76,9 @@ repositories {
 
 dependencies {
   kapt(libs.android.hilt.compile)
+
+  debugImplementation(libs.android.leakcanary)
   implementations(
-    libs.android.leakcanary,
     libs.android.hilt.runtime,
     libs.androidx.appcompat, // needed for naver-map
     libs.androidx.annotation,
@@ -91,11 +92,17 @@ dependencies {
     libs.bundles.jackson,
     libs.bundles.ktor.client,
   )
+
   testImplementations(
-    libs.test.ktor.client.mock,
     libs.test.kotlinx.coroutines,
-    libs.bundles.kotest,
+    libs.test.ktor.client.mock,
+    libs.test.kotest.framework,
+    libs.test.junit.core,
+    libs.test.androidx.junit.ktx,
+    libs.test.robolectric,
   )
+  testRuntimeOnly(libs.test.junit.engine)
+
   detektPlugins(libs.detekt.plugin.formatting)
 }
 
