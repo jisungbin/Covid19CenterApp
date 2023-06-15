@@ -16,7 +16,6 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
-import kotlinx.collections.immutable.toImmutableList
 
 fun CovidCenterResponse.toDomain() =
   ensureValid(data).fastMap { item ->
@@ -30,7 +29,7 @@ fun CovidCenterResponse.toDomain() =
       phoneNumber = ensureValid(item.phoneNumber),
       updatedAt = ensureValid(item.updatedAt).toDate(),
     )
-  }.toImmutableList()
+  }
 
 private fun <T> ensureValid(data: T?): T {
   contract { returns() implies (data != null) }
