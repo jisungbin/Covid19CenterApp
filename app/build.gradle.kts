@@ -97,11 +97,7 @@ dependencies {
     libs.test.kotlinx.coroutines,
     libs.test.ktor.client.mock,
     libs.test.kotest.framework,
-    libs.test.junit.core,
-    libs.test.androidx.junit.ktx,
-    libs.test.robolectric,
   )
-  testRuntimeOnly(libs.test.junit.engine)
 
   detektPlugins(libs.detekt.plugin.formatting)
 }

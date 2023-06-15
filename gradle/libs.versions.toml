@@ -32,10 +32,6 @@ ktor-client-core = "2.3.0"
 jackson-core = "2.14.2"
 
 test-kotest = "5.6.2"
-test-junit-core = "4.13.2"
-test-junit-engine = "5.9.3"
-test-androidx-junit-ktx = "1.1.5"
-test-robolectric = "4.10.3"
 
 [plugins]
 gradle-dependency-handler-extensions = { id = "land.sungbin.dependency.handler.extensions", version.ref = "gradle-dependency-handler-extensions" }
@@ -87,10 +83,6 @@ jackson-annotation = { module = "com.fasterxml.jackson.core:jackson-annotations"
 test-kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 test-ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor-client-core" }
 test-kotest-framework = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "test-kotest" }
-test-junit-core = { module = "junit:junit", version.ref = "test-junit-core" }
-test-junit-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "test-junit-engine" } # testRuntimeOnly
-test-androidx-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "test-androidx-junit-ktx" }
-test-robolectric = { module = "org.robolectric:robolectric", version.ref = "test-robolectric" }
 
 detekt-plugin-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "kotlin-detekt" }
 
