@@ -11,8 +11,6 @@ package io.github.jisungbin.covid19center.datasource
 
 import io.github.jisungbin.covid19center.model.domain.CovidCenterItem
 import io.github.jisungbin.covid19center.util.buildDate
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 import org.intellij.lang.annotations.Language
 
 object DummyResponse {
@@ -77,7 +75,7 @@ object DummyResponse {
 }
 """
 
-  val CenterItemList: ImmutableList<CovidCenterItem> = persistentListOf(
+  val CenterItemList = listOf(
     CovidCenterItem(
       id = 1,
       centerType = "청춘의",
