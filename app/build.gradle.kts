@@ -77,6 +77,7 @@ dependencies {
     libs.androidx.annotation,
     libs.androidx.datastore,
     libs.kotlinx.coroutines,
+    libs.kotlinx.collections.immutable,
     libs.compose.uiutil,
     libs.compose.activity,
     libs.bundles.compose,
