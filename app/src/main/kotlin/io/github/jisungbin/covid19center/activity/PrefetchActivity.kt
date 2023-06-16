@@ -30,6 +30,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.jisungbin.covid19center.datasource.dataStore
+import io.github.jisungbin.covid19center.datasource.exception.CovidCenterServerException
+import io.github.jisungbin.covid19center.datasource.exception.CovidCenterUnauthorizedException
 import io.github.jisungbin.covid19center.datasource.removeCovidCenterData
 import io.github.jisungbin.covid19center.datasource.writeCovidCenterData
 import io.github.jisungbin.covid19center.model.domain.CovidCenterItem
@@ -79,7 +81,19 @@ class PrefetchActivity : ComponentActivity() {
                 animationSpec = tween(durationMillis = durationMillis, easing = LinearEasing),
               )
             },
-            getCenterList = { pageIndex -> vm.getCenterList(page = pageIndex) },
+            getCenterList = { pageIndex ->
+              var result = listOf<CovidCenterItem>()
+              try {
+                result = vm.getCenterList(page = pageIndex)
+              } catch (serverException: CovidCenterServerException) {
+                toast("서버 요청에 실패했습니다.\n\n${serverException.message}")
+              } catch (unauthorizedException: CovidCenterUnauthorizedException) {
+                toast("API 인증에 실패했습니다.\n\n${unauthorizedException.message}")
+              } catch (exception: IllegalStateException) {
+                toast("응답 검증에 실패했습니다.\n\n${exception.message}")
+              }
+              result
+            },
             changeActivity = ::changeActivityWithAnimation,
           )
         }
