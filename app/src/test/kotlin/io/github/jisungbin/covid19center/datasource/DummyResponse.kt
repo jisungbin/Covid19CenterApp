@@ -9,6 +9,7 @@
 
 package io.github.jisungbin.covid19center.datasource
 
+import io.github.jisungbin.covid19center.model.SimpleLatLng
 import io.github.jisungbin.covid19center.model.domain.CovidCenterItem
 import io.github.jisungbin.covid19center.util.buildDate
 import org.intellij.lang.annotations.Language
@@ -80,6 +81,7 @@ object DummyResponse {
       id = 1,
       centerType = "청춘의",
       address = "그들의 인간은 타오르고 할지라도 아니더면",
+      latlng = SimpleLatLng(37.12345, 127.54321),
       centerName = "사막이다.",
       facilityName = "들은 바이며, 철환하였는가?",
       phoneNumber = "02-1234-1234",
@@ -96,6 +98,7 @@ object DummyResponse {
       id = 2,
       centerType = "용기가",
       address = "이상은 얼마나 커다란 충분히",
+      latlng = SimpleLatLng(35.12641, 129.72565),
       centerName = "이상의 물방아 있는가",
       facilityName = "그와 꽃 청춘",
       phoneNumber = "051-444-1111",
@@ -112,6 +115,7 @@ object DummyResponse {
       id = 3,
       centerType = "현저하게",
       address = "할지라도 그것을 든 생의 그들을",
+      latlng = SimpleLatLng(37.33333, 126.99686),
       centerName = "들어 오아이스도 힘차게",
       facilityName = "가장 창공에 황금시대다",
       phoneNumber = "032-111-0000",

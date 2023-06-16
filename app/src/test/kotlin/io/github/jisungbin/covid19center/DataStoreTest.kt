@@ -59,7 +59,7 @@ class DataStoreTest : StringSpec() {
 
       /* ktlint-disable max-line-length */
       val actualWritedJson =
-        "[{\"id\":1,\"centerType\":\"청춘의\",\"address\":\"그들의 인간은 타오르고 할지라도 아니더면\",\"centerName\":\"사막이다.\",\"facilityName\":\"들은 바이며, 철환하였는가?\",\"phoneNumber\":\"02-1234-1234\",\"updatedAt\":1626378909000},{\"id\":2,\"centerType\":\"용기가\",\"address\":\"이상은 얼마나 커다란 충분히\",\"centerName\":\"이상의 물방아 있는가\",\"facilityName\":\"그와 꽃 청춘\",\"phoneNumber\":\"051-444-1111\",\"updatedAt\":1673506381000},{\"id\":3,\"centerType\":\"현저하게\",\"address\":\"할지라도 그것을 든 생의 그들을\",\"centerName\":\"들어 오아이스도 힘차게\",\"facilityName\":\"가장 창공에 황금시대다\",\"phoneNumber\":\"032-111-0000\",\"updatedAt\":1575030081000}]"
+        "[{\"id\":1,\"centerType\":\"청춘의\",\"address\":\"그들의 인간은 타오르고 할지라도 아니더면\",\"latlng\":{\"latitude\":37.12345,\"longitude\":127.54321},\"centerName\":\"사막이다.\",\"facilityName\":\"들은 바이며, 철환하였는가?\",\"phoneNumber\":\"02-1234-1234\",\"updatedAt\":1626378909000},{\"id\":2,\"centerType\":\"용기가\",\"address\":\"이상은 얼마나 커다란 충분히\",\"latlng\":{\"latitude\":35.12641,\"longitude\":129.72565},\"centerName\":\"이상의 물방아 있는가\",\"facilityName\":\"그와 꽃 청춘\",\"phoneNumber\":\"051-444-1111\",\"updatedAt\":1673506381000},{\"id\":3,\"centerType\":\"현저하게\",\"address\":\"할지라도 그것을 든 생의 그들을\",\"latlng\":{\"latitude\":37.33333,\"longitude\":126.99686},\"centerName\":\"들어 오아이스도 힘차게\",\"facilityName\":\"가장 창공에 황금시대다\",\"phoneNumber\":\"032-111-0000\",\"updatedAt\":1575030081000}]"
       /* ktlint-enable max-line-length */
 
       testDataStore.data.first()[CovidCenterDataStoreItemKey] shouldBe actualWritedJson

@@ -10,6 +10,7 @@
 package io.github.jisungbin.covid19center.datasource.mapper
 
 import androidx.compose.ui.util.fastMap
+import io.github.jisungbin.covid19center.model.SimpleLatLng
 import io.github.jisungbin.covid19center.model.data.CovidCenterResponse
 import io.github.jisungbin.covid19center.model.domain.CovidCenterItem
 import java.text.SimpleDateFormat
@@ -24,6 +25,7 @@ fun CovidCenterResponse.toDomain() =
       id = ensureValid(item.id),
       centerType = ensureValid(item.centerType),
       address = ensureValid(item.address),
+      latlng = SimpleLatLng(ensureValid(item.lat?.toDoubleOrNull()), ensureValid(item.lng?.toDoubleOrNull())),
       centerName = ensureValid(item.centerName),
       facilityName = ensureValid(item.facilityName),
       phoneNumber = ensureValid(item.phoneNumber),
