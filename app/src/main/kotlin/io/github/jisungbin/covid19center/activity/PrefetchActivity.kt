@@ -90,6 +90,7 @@ class PrefetchActivity : ComponentActivity() {
 private fun Activity.changeActivityWithAnimation(activity: KClass<Activity>) {
   startActivity(Intent(this, activity.java))
   overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+  finish()
 }
 
 @VisibleForTesting
