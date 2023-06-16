@@ -14,6 +14,7 @@ import io.github.jisungbin.covid19center.model.SimpleLatLng
 import io.github.jisungbin.covid19center.model.data.CovidCenterResponse
 import io.github.jisungbin.covid19center.model.domain.CovidCenterItem
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
@@ -45,3 +46,5 @@ private val CovidCenterDateFormatter = SimpleDateFormat(CovidCenterDateFormat, L
 
 private fun String.toDate() =
   CovidCenterDateFormatter.parse(this) ?: error("날짜 형식이 잘못되었습니다. ($this)")
+
+fun Date.toFormattedString() = CovidCenterDateFormatter.format(this) ?: error("날짜 형식이 잘못되었습니다. ($this)")
