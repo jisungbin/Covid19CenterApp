@@ -379,7 +379,7 @@ private fun LocationOnButton(
       .background(color = Color.White, shape = CircleShape)
       .paint(
         painter = rememberVectorPainter(Icons.Filled.LocationOn),
-        colorFilter = remember { ColorFilter.tint(color = buttonIconTint) },
+        colorFilter = remember(buttonIconTint) { ColorFilter.tint(color = buttonIconTint) },
       )
       .clickable(onClick = onClick),
   )
