@@ -17,6 +17,11 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: Set Timezone to Asia/Seoul
+        uses: szenius/set-timezone@v1.2
+        with:
+          timezoneMacos: "Asia/Seoul"
+
       - uses: actions/checkout@v3
 
       - name: Setup JDK 17
