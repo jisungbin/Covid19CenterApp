@@ -33,6 +33,8 @@ import io.github.jisungbin.covid19center.datasource.dataStore
 import io.github.jisungbin.covid19center.datasource.removeCovidCenterData
 import io.github.jisungbin.covid19center.datasource.writeCovidCenterData
 import io.github.jisungbin.covid19center.model.domain.CovidCenterItem
+import io.github.jisungbin.covid19center.util.ToastWrapper
+import io.github.jisungbin.covid19center.util.checkNetworkIsAvailable
 import io.github.jisungbin.covid19center.viewmodel.CovidCenterViewModel
 import javax.inject.Inject
 import kotlin.reflect.KClass
@@ -45,11 +47,19 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class PrefetchActivity : ComponentActivity() {
 
+  private val toast by lazy { ToastWrapper(this) }
+
   @Inject
   lateinit var vm: CovidCenterViewModel
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+
+    if (!checkNetworkIsAvailable(applicationContext)) {
+      toast("네트워크 연결이 필요합니다.")
+      return finish()
+    }
+
     setContent {
       MaterialTheme {
         val progressPercentAnimatable = remember {
