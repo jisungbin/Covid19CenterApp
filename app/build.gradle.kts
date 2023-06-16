@@ -80,7 +80,7 @@ dependencies {
   debugImplementation(libs.android.leakcanary)
   implementations(
     libs.android.hilt.runtime,
-    libs.androidx.appcompat, // needed for naver-map
+    libs.android.gms.location,
     libs.androidx.annotation,
     libs.androidx.datastore,
     libs.kotlinx.coroutines,

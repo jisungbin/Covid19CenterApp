@@ -16,8 +16,8 @@ import io.github.jisungbin.covid19center.model.data.CovidCenterResponse
 import io.github.jisungbin.covid19center.model.domain.CovidCenterItem
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import io.ktor.client.statement.bodyAsText
-import io.ktor.http.parameters
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -28,10 +28,8 @@ class CovidCenterViewModel @Inject constructor(
   @Throws(CovidCenterUnauthorizedException::class, CovidCenterServerException::class)
   suspend fun getCenterList(page: Int, perPage: Int = 10): List<CovidCenterItem> {
     val httpResponse = covidCenterHttpClient.get {
-      parameters {
-        append("page", "$page")
-        append("perPage", "$perPage")
-      }
+      parameter("page", "$page")
+      parameter("perPage", "$perPage")
     }
     val (statusCode, statusDescription) = httpResponse.status
 
