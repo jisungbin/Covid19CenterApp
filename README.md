@@ -13,6 +13,7 @@
 - Hilt
 - DataStore
 - Coroutines
+- Kotest (test framework)
 
 ### 주요 기능
 
