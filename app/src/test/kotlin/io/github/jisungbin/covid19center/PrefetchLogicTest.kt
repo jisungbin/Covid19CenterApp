@@ -13,7 +13,6 @@ package io.github.jisungbin.covid19center
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import io.github.jisungbin.covid19center.activity.prefetchLaunchedEffect
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.core.test.Enabled
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
@@ -54,11 +53,7 @@ class PrefetchLogicTest : StringSpec() {
       testCoroutineScope.cancel()
     }
 
-    "prefetchLaunchedEffect 로직이 prefetch 애니메이션 조건에 맞게 작동함".config(
-      enabledOrReasonIf = {
-        Enabled.disabled("prefetchLaunchedEffect는 테스트 코드를 어떤 방식으로 작성해야 할지 모르겠음")
-      },
-    ) {
+    "prefetchLaunchedEffect 로직이 prefetch 애니메이션 조건에 맞게 작동함" {
       var currentTargetValue: Float? = null
       var prefetchFinished = false
 
@@ -70,7 +65,7 @@ class PrefetchLogicTest : StringSpec() {
             delay(durationMillis.toLong())
           },
           getCenterList = { delay(3000); emptyList() },
-          changeActivity = { prefetchFinished = true },
+          onFinish = { prefetchFinished = true },
         )
       }
 
@@ -83,11 +78,11 @@ class PrefetchLogicTest : StringSpec() {
         currentTargetValue shouldBe 0.8f
         prefetchFinished.shouldBeFalse()
 
-        delay(700) // current ms is 3200
+        delay(700) // current ms is 3300
         currentTargetValue shouldBe 1f
         prefetchFinished.shouldBeFalse()
 
-        delay(800) // current ms is 4000
+        delay(400) // current ms is 3700
         currentTargetValue shouldBe 1f
         prefetchFinished.shouldBeTrue()
       }
