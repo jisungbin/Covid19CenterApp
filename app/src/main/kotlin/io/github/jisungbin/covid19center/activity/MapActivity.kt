@@ -65,10 +65,10 @@ import com.naver.maps.map.compose.CameraPositionState
 import com.naver.maps.map.compose.ExperimentalNaverMapApi
 import com.naver.maps.map.compose.MapUiSettings
 import com.naver.maps.map.compose.Marker
-import com.naver.maps.map.compose.MarkerState
 import com.naver.maps.map.compose.NaverMap
 import com.naver.maps.map.compose.NaverMapComposable
 import com.naver.maps.map.compose.rememberCameraPositionState
+import com.naver.maps.map.compose.rememberMarkerState
 import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.MarkerIcons
@@ -317,7 +317,7 @@ private fun CovidCenterMarker(
   checkIsValidDate: (date: Date) -> Boolean,
 ) {
   Marker(
-    state = MarkerState(position = center.latlng.asLatLng()),
+    state = rememberMarkerState(key = center.latlng.toString(), position = center.latlng.asLatLng()),
     icon = MarkerIcons.BLACK,
     iconTintColor = markerColorForCenterType(center.centerType),
     onClick = { marker ->
