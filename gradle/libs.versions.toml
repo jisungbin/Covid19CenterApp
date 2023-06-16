@@ -12,6 +12,7 @@ kotlinx-collections-immutable = "0.3.5"
 
 android-leakcanary = "2.10"
 android-hilt = "2.46"
+android-gms-location = "21.0.1"
 
 androidx-appcompat = "1.6.1"
 androidx-annotation = "1.6.0"
@@ -54,6 +55,7 @@ kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collec
 android-leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "android-leakcanary" }
 android-hilt-runtime = { module = "com.google.dagger:hilt-android", version.ref = "android-hilt" }
 android-hilt-compile = { module = "com.google.dagger:hilt-android-compiler", version.ref = "android-hilt" }
+android-gms-location = { module = "com.google.android.gms:play-services-location", version.ref = "android-gms-location" }
 
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
