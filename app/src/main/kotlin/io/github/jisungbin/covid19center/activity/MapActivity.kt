@@ -175,7 +175,7 @@ class MapActivity : ComponentActivity() {
                 val lastLatlng = LatLng(lastLocation.latitude, lastLocation.longitude)
                 cameraPositionState.animate(update = CameraUpdate.scrollAndZoomTo(lastLatlng, 17.0))
               }
-            }
+            },
           )
         }
       }
@@ -332,7 +332,7 @@ private fun CovidCenterMarker(
               with(center) {
                 // 가끔씩 비어있는 데이터가 들어옴 -> 비어있지 않은 데이터만 표시
                 if (centerName.isNotBlank()) {
-                  append("[${centerName}]")
+                  append("[$centerName]")
                 }
                 if (address.isNotBlank()) {
                   appendLine()
@@ -381,6 +381,6 @@ private fun LocationOnButton(
         painter = rememberVectorPainter(Icons.Filled.LocationOn),
         colorFilter = remember { ColorFilter.tint(color = buttonIconTint) },
       )
-      .clickable(onClick = onClick)
+      .clickable(onClick = onClick),
   )
 }
