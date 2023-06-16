@@ -39,7 +39,6 @@ import io.github.jisungbin.covid19center.util.ToastWrapper
 import io.github.jisungbin.covid19center.util.checkNetworkIsAvailable
 import io.github.jisungbin.covid19center.viewmodel.CovidCenterViewModel
 import javax.inject.Inject
-import kotlin.reflect.KClass
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -94,7 +93,9 @@ class PrefetchActivity : ComponentActivity() {
               }
               result
             },
-            changeActivity = ::changeActivityWithAnimation,
+            onFinish = {
+              changeActivityWithAnimation<MapActivity>()
+            },
           )
         }
 
@@ -111,8 +112,8 @@ class PrefetchActivity : ComponentActivity() {
   }
 }
 
-private fun Activity.changeActivityWithAnimation(activity: KClass<Activity>) {
-  startActivity(Intent(this, activity.java))
+private inline fun <reified T : Activity> Activity.changeActivityWithAnimation() {
+  startActivity(Intent(this, T::class.java))
   overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
   finish()
 }
@@ -122,7 +123,7 @@ fun CoroutineScope.prefetchLaunchedEffect(
   dataStore: DataStore<Preferences>,
   animateProgressPercent: suspend (targetValue: Float, durationMillis: Int) -> Unit,
   getCenterList: suspend (pageIndex: Int) -> List<CovidCenterItem>,
-  changeActivity: (activity: KClass<Activity>) -> Unit,
+  onFinish: () -> Unit,
 ) {
   val jobs = ArrayList<Job>(10)
   val items = ArrayList<CovidCenterItem>(100)
@@ -141,19 +142,12 @@ fun CoroutineScope.prefetchLaunchedEffect(
   // 2. API 데이터 저장이 완료되지 않았다면 80%에서 대기
   // 3. 저장이 완료되면 0.4초에 걸쳐 100%
   launch {
-    animateProgressPercent(
-      /*targetValue = */ 0.8f,
-      /*durationMillis = */ 1600,
-    )
+    animateProgressPercent(/*targetValue = */ 0.8f, /*durationMillis = */ 1600)
 
     jobs.joinAll()
     dataStore.writeCovidCenterData(items)
 
-    animateProgressPercent(
-      /*targetValue = */ 1f,
-      /*durationMillis = */ 400,
-    )
-    @Suppress("UNCHECKED_CAST")
-    changeActivity(MapActivity::class as KClass<Activity>)
+    animateProgressPercent(/*targetValue = */ 1f, /*durationMillis = */ 400)
+    onFinish()
   }
 }
