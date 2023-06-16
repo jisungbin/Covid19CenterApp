@@ -332,18 +332,18 @@ private fun CovidCenterMarker(
               with(center) {
                 // 가끔씩 비어있는 데이터가 들어옴 -> 비어있지 않은 데이터만 표시
                 if (centerName.isNotBlank()) {
-                  append("[$centerName]")
+                  val centerTypeOrEmpty =
+                    if (centerType.isNotBlank()) " ($centerType)"
+                    else ""
+                  append("[$centerName]$centerTypeOrEmpty\n")
                 }
                 if (address.isNotBlank()) {
-                  appendLine()
-                  append("- $address")
+                  append("- $address\n")
                 }
                 if (facilityName.isNotBlank()) {
-                  appendLine()
-                  append("- $facilityName")
+                  append("- $facilityName\n")
                 }
                 if (phoneNumber.isNotBlank()) {
-                  appendLine()
                   append("- $phoneNumber")
                 }
                 // 가끔씩 1900년도 데이터가 들어옴 -> 2019년 이상 데이터만 표시
