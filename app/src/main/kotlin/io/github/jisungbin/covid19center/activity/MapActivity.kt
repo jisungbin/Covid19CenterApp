@@ -106,7 +106,7 @@ class MapActivity : ComponentActivity() {
     }
 
   private var lastLocation: Location? = null
-  private val locationManager by lazy { getSystemService(LOCATION_SERVICE) as LocationManager }
+  private val locationManager by lazy { getSystemService(Context.LOCATION_SERVICE) as LocationManager }
 
   private val fusedLocationClient by lazy {
     LocationServices.getFusedLocationProviderClient(applicationContext)
