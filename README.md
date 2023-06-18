@@ -31,7 +31,13 @@
 
 - Clean Architecture: 클아를 도입하기엔 프로젝트가 매우 작아, 클아를 도입하는 비용에 비해 얻는 이점이 아주 사소하다고 판단하여 사용하지 않음.
 - Repository Pattern: 레포지토리를 도입하기엔 비즈니스 레이어가 매우 작고, 비즈니스 usecase도 하나 뿐이라 레포지토리를 도입하는 비용에 비해 얻는 이점이 아주 사소하다고 판단하여 사용하지 않음.
-- AAC ViewModel: 본 앱을 컴포즈 100%로 만들면서 AAC VM의 장점을 모두 대체할 수 방안이 제공됨. 해당 방안을 적극 사용하고, VM에 AAC 개념을 지우면 더 Testable하고 Reusable한 코드가 되기에 AAC VM을 사용하지 않음.
+- AAC ViewModel: 본 앱을 컴포즈 100%로 만들면서 AAC VM의 장점을 모두 대체할 수 있는 방안이 제공됨. 해당 방안을 적극 사용하고, VM에 AAC 개념을 지우면 더 Testable하고 Reusable한 코드가 되기에 AAC VM을 사용하지 않음.
+- AAC가 아닌 MVVM은 android를 몰라야 하고, 앱 내에 비즈니스 로직이 매우 적어(api request, datastore fetch) VM에는 api request 코드만 넣고, datastore fetch는 액티비티에서 진행함.
+
+### 빌드 및 다운로드
+
+- 빌드: 본 앱은 안드로이드 스튜디오의 카나리 버전을 사용합니다. 만약 AGP 호환성 문제가 발생한다면 version catalog에서 `gradle-android` 버전을 조정해 주세요.
+- 다운로드: 본 앱의 release build는 GitHub Release 페이지에서 다운로드하실 수 있습니다.
 
 ### 코드 스타일
 
