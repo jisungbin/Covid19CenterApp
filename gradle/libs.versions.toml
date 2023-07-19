@@ -11,7 +11,7 @@ kotlinx-coroutines = "1.7.2"
 kotlinx-collections-immutable = "0.3.5"
 
 android-leakcanary = "2.12"
-android-hilt = "2.46.1"
+android-hilt = "2.47"
 android-gms-location = "21.0.1"
 
 androidx-appcompat = "1.6.1"
