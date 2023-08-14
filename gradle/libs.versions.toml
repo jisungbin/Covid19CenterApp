@@ -19,7 +19,7 @@ androidx-annotation = "1.6.0"
 androidx-datastore = "1.0.0"
 
 compose-compiler = "1.5.1"
-compose-runtime = "1.4.3"
+compose-runtime = "1.5.0"
 compose-uiutil = "1.4.3"
 compose-foundation = "1.4.3"
 compose-ui = "1.4.3"
